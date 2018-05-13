@@ -1,0 +1,45 @@
+/*
+ *  Copyright (C) 2018 Bc. Pavel Stambrecht - All Rights Reserved
+ *  Unauthorized copying of this file, via any medium is strictly prohibited
+ *  Proprietary and confidential
+ *  Written by Pavel Stambrecht
+ * /
+ */
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+	compileSdkVersion 'android-P'
+	defaultConfig {
+		applicationId "cz.stambrecht.slicesexample"
+		minSdkVersion 19
+		targetSdkVersion 27
+		versionCode 1
+		versionName "1.0"
+		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+	}
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
+}
+
+dependencies {
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+	implementation "androidx.slice:slice-builders:1.0.0-alpha1"
+
+	// DO NOT USE DEPENDENCIES BELOW
+	// See https://stackoverflow.com/a/50301692. Thanks Alvaro Santa Cruz
+	// implementation 'com.android.support:appcompat-v7:28.0.0-alpha1'
+	// implementation 'com.android.support:design:28.0.0-alpha1'
+	// implementation 'com.android.support:support-v4:28.0.0-alpha1'
+}
+repositories {
+	mavenCentral()
+}
+
+apply plugin: 'kotlin-android-extensions'
